@@ -32,12 +32,10 @@ release: -common-pre
 	@echo 'make release begin'
 	@rsync -av . ./out/release --exclude-from .rsyncignore
 	@cd out/release && $(NPM_INSTALL_PRODUCTION)
-	@cd out/release/public && $(NPM_INSTALL_PRODUCTION)
 	@echo 'make release done'
 
 -npm-install:
 	@$(NPM_INSTALL_TEST)
-	@cd public && $(NPM_INSTALL_TEST)
 
 clean:
 	@echo 'clean'

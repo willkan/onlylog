@@ -39,26 +39,29 @@ describe('OnlyLog', function() {
     expect(log).to.have.keys('info', 'debug', 'warn', 'error')
     log.on('error', function (err) {console.error(err)})
     log.info('msg');
-    log.info('msg');
-    return setTimeout(function() {
-      var str;
-      str = fs.readFileSync(filename, 'utf-8');
-      expect(str).to.match(/.+msg\n.+msg/);
-      expect(log.buffer.length).to.be(0);
-      return done();
-    }, 300);
+    setTimeout(function() {
+      expect(log.buffer.length).to.be(1);
+      log.info('msg');
+      setTimeout(function() {
+        var str;
+        str = fs.readFileSync(filename, 'utf-8');
+        expect(str).to.match(/.+msg\n.+msg\n/);
+        expect(log.buffer.length).to.be(0);
+        return done();
+      }, 200);
+    }, 200);
   });
   it('info because duration', function(done) {
     var log;
     log = OnlyLog(os({}, options, {
-      duration: 100
+      duration: 10
     }));
     log.info('msg');
     log.info('msg');
     return setTimeout(function() {
       var str;
       str = fs.readFileSync(filename, 'utf-8');
-      expect(str).to.match(/.+msg\n.+msg/);
+      expect(str).to.match(/.+msg\n.+msg\n/);
       expect(log.buffer.length).to.be(0);
       return done();
     }, 300);
@@ -68,6 +71,7 @@ describe('OnlyLog', function() {
     log = OnlyLog(os({}, options, {
       bufferLength: 1
     }));
+    log._checkFile();
     log.log_day = '2014-01-01';
     log._checkFile();
     log.info('msg');
@@ -75,7 +79,7 @@ describe('OnlyLog', function() {
     return setTimeout(function() {
       var str;
       str = fs.readFileSync(filename, 'utf-8');
-      expect(str).to.match(/.+msg\n.+msg/);
+      expect(str).to.match(/.+msg\n.+msg\n/);
       expect(log.buffer.length).to.be(0);
       return done();
     }, 300);
@@ -111,6 +115,19 @@ describe('OnlyLog', function() {
       str = fs.readFileSync(filename, 'utf-8');
       expect(str).to.be('')
       expect(log.buffer.length).to.be(0);
+      return done();
+    }, 300);
+  });
+  it('log to stream', function(done) {
+    var log;
+    log = OnlyLog(os({}, options, {
+      bufferLength: 1,
+      stream: process.stdout
+    }));
+    log.debug('msg');
+    log.debug('msg');
+    return setTimeout(function() {
+      expect(fs.existsSync(filename)).to.be(false)
       return done();
     }, 300);
   });
