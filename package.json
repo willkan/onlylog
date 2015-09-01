@@ -1,0 +1,24 @@
+{
+  "name": "onlylog",
+  "version": "0.0.1",
+  "description": "simple log",
+  "author": "willkan <wanghuikan@gmail.com>",
+  "keywords": [
+  ],
+  "dependencies": {
+    "lodash": "*",
+    "moment": "*"
+  },
+  "devDependencies": {
+    "expect.js": "*",
+    "mocha": "*",
+    "istanbul": "*",
+    "options-stream": "*"
+  },
+  "engines": [
+    "node >=0.10.7"
+  ],
+  "scripts": {
+    "test": "make test"
+  }
+}
