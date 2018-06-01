@@ -13,7 +13,7 @@ declare namespace onlylog {
     on?(msg: string, handler: Function): any
   }
   export interface OnlylogOptions {
-    fileName?: string //define log file, e.p. [test-]YYYY-MM-DD[.log]
+    filename?: string //define log file, e.p. [test-]YYYY-MM-DD[.log]
     allLevels?: Level[] //define api name
     logLevels?: Level[] //define the level need to write to file
     duration?: number // flush buffer time, default is 2000

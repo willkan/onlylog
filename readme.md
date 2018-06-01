@@ -28,7 +28,7 @@ log.info('xxxx')
 
   ```javascript
   {
-    fileName : '[test-]YYYY-MM-DD[.log]', //define log file
+    filename : '[test-]YYYY-MM-DD[.log]', //define log file
     allLevels : ['info', 'debug', 'warn', 'error'], //define api name
     logLevels : ['info'], //define the level need to write to file
     duration : 5000, // flush buffer time, default is 2000

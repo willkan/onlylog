@@ -218,6 +218,6 @@ function onlylog(options) {
   return new OnlyLog(options);
 }
 
-modeule.exports = onlylog;
+module.exports = onlylog;
 
 onlylog.format = format;
