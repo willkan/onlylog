@@ -1,0 +1,53 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "spread": true,
+    "superInFunctions": true,
+    "modules": true,
+    "jsx": true,
+    "experimentalObjectRestSpread": true
+  },
+  "rules": {
+    "no-cond-assign": 2,
+    "no-constant-condition": 2,
+    "no-control-regex": 2,
+    "no-debugger": 2,
+    "no-func-assign": 2,
+    "no-unreachable": 2,
+    "use-isnan": 2,
+    "valid-typeof": 2,
+    "no-unexpected-multiline": 1,
+    "no-alert": 2,
+    "no-caller": 2,
+    "no-eval": 2,
+    "no-extend-native": 2,
+    "no-extra-bind": 2,
+    "no-native-reassign": 2,
+    "no-new-func": 2,
+    "no-new-wrappers": 2,
+    "no-redeclare": 2,
+    "no-throw-literal": 2,
+    "no-with": 2,
+    "radix": 2,
+    "no-shadow": 2,
+    "no-use-before-define":   [2, "nofunc"],
+    "constructor-super": 2,
+    "no-class-assign": 2,
+    "no-const-assign": 2,
+    "no-this-before-super": 2,
+    "strict": 2,
+    "no-undef": 2,
+    "no-unused-vars": 1,
+    "prefer-const": 1,
+    "no-dupe-keys": 2
+  }
+}

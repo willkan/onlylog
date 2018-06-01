@@ -5,3 +5,4 @@ npm-debug.log
 logs
 run
 out
+.nyc_output

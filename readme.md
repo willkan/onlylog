@@ -14,7 +14,7 @@ onlylog , A pretty simple logger for Node.js
 var OnlyLog = require('onlylog')
 var log = OnlyLog({
   fileName : '[test-]YYYY-MM-DD[.log]', //define log file
-});
+})
 log.info('xxxx')
 ```
 
@@ -34,11 +34,10 @@ log.info('xxxx')
     duration : 5000, // flush buffer time, default is 2000
     bufferLength : 1000 // max buffer length, default is 0
     format: // custom format function
-      function (level) {
-        return function () {
-          return arguments.toString()
-        }
+      function ({time, level, args}) {
+        return time + ' [' + level + '] ' + util.format.apply(null, args)
       },
-    stream: process.stdout // use stream instead of default file ouput
+    stream: process.stdout, // use stream instead of default file ouput
+    debugSignal: 'SIGUSR1' // set logLevels = allLevels when receive debugSignal
   }
   ```
