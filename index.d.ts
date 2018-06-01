@@ -11,6 +11,7 @@ declare namespace onlylog {
     debug(message?: any, ...optionalParams: any[]): void;
     warn(message?: any, ...optionalParams: any[]): void;
     on?(msg: string, handler: Function): any
+    options: OnlylogOptions
   }
   export interface OnlylogOptions {
     filename?: string //define log file, e.p. [test-]YYYY-MM-DD[.log]
