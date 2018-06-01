@@ -1,9 +1,9 @@
-var onlylog: ((options: OnlylogOptions) => Onlylog) & {
-  format: formatFunction
+declare var onlylog: ((options: onlylog.OnlylogOptions) => onlylog.Onlylog) & {
+  format: onlylog.formatFunction
 }
 declare namespace onlylog {
   export type Level = 'info' | 'debug' | 'warn' | 'error'
-  type formatFunction = (options: {level: Level, args: any[], time: number}) => string
+  export type formatFunction = (options: {level: Level, args: any[], time: number}) => string
   export interface Onlylog {
     destroy: () => void
     error(message?: any, ...optionalParams: any[]): void;
