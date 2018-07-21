@@ -139,4 +139,25 @@ describe('OnlyLog', function() {
       done()
     }
   });
+  it('rotate file', function (done) {
+    console.log('in test')
+    var log;
+    var fileName;
+    log = OnlyLog(os({}, options, {
+      bufferLength: 1,
+      rotate: 1
+    }));
+    fileName = moment().subtract(log.options.rotation, 'days').format(log.options.filename);
+    fs.openSync(fileName, 'w');
+    log.log_day = '2014-01-01';
+    log._rotate();
+    return setTimeout(function () {
+      try {
+        fs.lstatSync(fileName);
+        return done('rotate file failed, it\'s still exist');
+      } catch(err) {
+        return done();
+      }
+    }, 300);
+  });
 });
