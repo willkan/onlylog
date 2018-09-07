@@ -145,7 +145,7 @@ describe('OnlyLog', function() {
     var fileName;
     log = OnlyLog(os({}, options, {
       bufferLength: 1,
-      rotate: 1
+      rotation: 7
     }));
     fileName = moment().subtract(log.options.rotation, 'days').format(log.options.filename);
     fs.openSync(fileName, 'w');
