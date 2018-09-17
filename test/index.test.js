@@ -1,4 +1,4 @@
-var cwd, expect, fs, OnlyLog, moment, os, path;
+var cwd, expect, fs, OnlyLog, moment, os, path, execSync;
 
 expect = require('expect.js');
 
@@ -13,6 +13,8 @@ moment = require('moment');
 OnlyLog = require('../index.js');
 
 cwd = process.cwd();
+
+execSync = require('child_process').execSync
 
 describe('OnlyLog', function() {
   var filename, options;
@@ -140,7 +142,6 @@ describe('OnlyLog', function() {
     }
   });
   it('rotate file', function (done) {
-    console.log('in test')
     var log;
     var fileName;
     log = OnlyLog(os({}, options, {
@@ -159,5 +160,22 @@ describe('OnlyLog', function() {
         return done();
       }
     }, 300);
+  });
+  it('create folder do not exists automatically', function (done) {
+    var log;
+    var filename = "[test/aaa/bbb/ccc/test-]YYYY-MM-DD[.log]";
+    var fileName = moment().format(filename);
+    log = OnlyLog(os({}, options, {
+      bufferLength: 1,
+      rotation: 7,
+      filename
+    }));
+    try {
+      fs.lstatSync(fileName);
+      execSync('rm -rf test/aaa');
+      return done();
+    } catch (err) {
+      return done('create folder and file failed');
+    }
   });
 });

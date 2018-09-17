@@ -1,16 +1,16 @@
 {
   "name": "onlylog",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "simple log",
   "author": "willkan <wanghuikan@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/willkan/onlylog.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "dependencies": {
     "lodash": "*",
+    "mkdirp": "*",
     "moment": "*"
   },
   "devDependencies": {
@@ -19,9 +19,9 @@
     "istanbul": "*",
     "options-stream": "*"
   },
-  "engines": [
-    "node >=0.10.7"
-  ],
+  "engines": {
+    "node": ">=0.10.7"
+  },
   "scripts": {
     "test": "make test"
   }
