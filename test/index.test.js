@@ -175,7 +175,7 @@ describe('OnlyLog', function() {
       execSync('rm -rf test/aaa');
       return done();
     } catch (err) {
-      return done('create folder and file failed');
+      return done('create folder and file failed = ' + err.message);
     }
   });
 });
